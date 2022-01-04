@@ -78,5 +78,4 @@ class StudentDetailsView: UIViewController {
                      "Sansa Stark"]
         self.nameModificationObserver?(names.randomElement() ?? "No Name Produced")
     }
-    
 }
