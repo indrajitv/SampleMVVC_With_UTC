@@ -10,10 +10,10 @@ import Foundation
 struct StudentAPIServices: StudentService {
     func getStudentData(completion: @escaping (Result<[Student], Error>) -> Void) {
         /*completion(.failure(NSError.init(domain: "No API for now as it is demo project",
-                                         code: 100,
-                                         userInfo: nil))) // In real life these will some values
-        In case of failure
-        */
+         code: 100,
+         userInfo: nil))) // In real life these will some values
+         In case of failure
+         */
         let students: [Student] = [
             .init(name: "Foo", rollNumber: 1, dob: Date().addingTimeInterval(-24 * 60 * 60 * 1000)),
             .init(name: "Bar", rollNumber: 2, dob: Date().addingTimeInterval(-24 * 60 * 60 * 2000)),

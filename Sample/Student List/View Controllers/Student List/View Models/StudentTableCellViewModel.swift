@@ -9,7 +9,7 @@ import Foundation
 
 protocol StudentTableCellViewModelProtocol {
     var student: Student { get }
-    var studentName: String { get }
+    var studentName: String { get set }
     var studentDOB: String { get }
 
     func checkIfAdult(date: Date?) -> Bool?

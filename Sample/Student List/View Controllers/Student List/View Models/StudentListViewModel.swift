@@ -19,6 +19,7 @@ protocol StudentListViewModelProtocol {
     func loadStudentData()
     func getGetNumberOfStudent() -> Int
     func removeStudentAtIndex(index: Int) throws
+    func updateStudentName(at index: Int, newName: String)
 }
 
 class StudentListViewModel: StudentListViewModelProtocol {
@@ -96,5 +97,13 @@ class StudentListViewModel: StudentListViewModelProtocol {
          print(error.localizedDescription)
          }
          */
+    }
+    
+    func updateStudentName(at index: Int, newName: String) {
+        if index < self.students.count, index >= 0 {
+            var student = self.students[index].student
+            student.name = newName
+            self.students[index] = convertStudentToViewModel(students: [student])[0]
+        }
     }
 }

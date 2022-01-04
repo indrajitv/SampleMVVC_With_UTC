@@ -10,7 +10,7 @@ import Foundation
 struct StudentDetailsViewModel {
     let student: Student
     
-    let studentName: String
+    var studentName: String
     
     init(student: Student) {
         self.student = student

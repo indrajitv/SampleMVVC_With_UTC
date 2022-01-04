@@ -10,7 +10,7 @@ import UIKit
 /// It lists the students in vetrtical fashion. Allows search and pagination.
 final class StudentListView: UIViewController {
     // MARK: Properties
-    var viewModel: StudentListViewModelProtocol
+    private(set) var viewModel: StudentListViewModelProtocol
     var didSelectRowAtCompletion: ((_ viewModel: StudentTableCellViewModelProtocol?) -> Void)?
     
     lazy var tableView: UITableView = {
@@ -20,9 +20,8 @@ final class StudentListView: UIViewController {
         table.dataSource = self
         return table
     }()
-
-    // MARK: Life cycle methods
     
+    // MARK: Life cycle methods
     init(viewModel: StudentListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -59,5 +58,12 @@ final class StudentListView: UIViewController {
             }
         }
         self.viewModel.loadStudentData() // Should always get called after above code.
+    }
+    
+    func observeForNewName(newName: String) {
+        print("observeForNewName method fired from StudentListView -", newName)
+        if let indexPath = tableView.indexPathForSelectedRow {
+            self.viewModel.updateStudentName(at: indexPath.row, newName: newName)
+        }
     }
 }

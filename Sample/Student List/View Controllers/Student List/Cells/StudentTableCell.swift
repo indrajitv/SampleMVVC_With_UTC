@@ -9,7 +9,6 @@ import UIKit
 
 /// Cell being used by StudentListView table to list the students
 class StudentTableCell: UITableViewCell {
-    
     // MARK: Properties
     static let cellID = String(describing: StudentTableCell.self)
     

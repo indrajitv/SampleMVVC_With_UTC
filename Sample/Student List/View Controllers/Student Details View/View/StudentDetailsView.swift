@@ -12,6 +12,7 @@ class StudentDetailsView: UIViewController {
     
     // MARK: Properties
     let viewModel: StudentDetailsViewModel
+    var nameModificationObserver: ((_ newName: String) -> Void)?
     
     let labelStudentName: UILabel = {
         let label = UILabel()
@@ -43,6 +44,7 @@ class StudentDetailsView: UIViewController {
         super.viewDidLoad()
         
         self.setUpViews()
+        self.makeMainViewTouchable()
     }
     
     // MARK: Other methods
@@ -61,5 +63,20 @@ class StudentDetailsView: UIViewController {
         ])
     }
     
+    func makeMainViewTouchable() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self,
+                                                                   action: #selector(self.self.didTapOnMainView)))
+    }
+    
+    @objc func didTapOnMainView() {
+        let names = ["Robert Baratheon",
+                     "Jaime Lannister",
+                     "Jon Snow",
+                     "Arya Stark",
+                     "Joffrey Baratheon",
+                     "Ygritte",
+                     "Sansa Stark"]
+        self.nameModificationObserver?(names.randomElement() ?? "No Name Produced")
+    }
     
 }
